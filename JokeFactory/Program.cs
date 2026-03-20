@@ -27,6 +27,39 @@ string[,] jokesDatabase = new string[3, 3]
 "What do you get from a pampered cow? Spoiled milk."
 }
 };
+Console.WriteLine("\nWhat kind of joke do you want?");
+Console.WriteLine("1. Tech");
+Console.WriteLine("2. Dad");
+Console.WriteLine("3. Animal");
+Console.Write("> ");
+string userInput = Console.ReadLine();
+int categoryIndex = -1;
+if (userInput == "1")
+{
+    categoryIndex = 0;
+    Console.WriteLine("\nExecuting Tech_Humor.exe...");
+}
+else if (userInput == "2")
+{
+    categoryIndex = 1;
+    Console.WriteLine("\nActivating Dad_Mode...");
+}
+else if (userInput == "3")
+{
+    categoryIndex = 2;
+    Console.WriteLine("\nLoading Animal_Antics...");
+}
+else
+{
+    Console.WriteLine("\nInvalid input. Defaulting to Tech Jokes.");
+    categoryIndex = 0;
+}
+
+Random randomizer = new Random();
+int randomJokeIndex = randomizer.Next(0, 3);
+string selectedJoke = jokesDatabase[categoryIndex, randomJokeIndex];
+Console.WriteLine("\n*** JOKE ***");
+Console.WriteLine(selectedJoke);
 
 
-Console.Read();
+
