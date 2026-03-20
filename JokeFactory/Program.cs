@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics.Metrics;
+using System.Media;
 string asciiBot = @"
 [ ]
 (o o)
@@ -61,5 +63,16 @@ string selectedJoke = jokesDatabase[categoryIndex, randomJokeIndex];
 Console.WriteLine("\n*** JOKE ***");
 Console.WriteLine(selectedJoke);
 
-
+// if (OperatingSystem.IsWindows()) Sound Player only works on Windows
+// {
+try
+{
+    SoundPlayer player = new SoundPlayer("rimshot.wav");
+    player.PlaySync(); // PlaySync will play the sound, blocking execution then continue after
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"(Audio failed to play: {ex.Message})");
+}
+// }
 
